@@ -1,0 +1,54 @@
+#!/bin/bash
+### BEGIN INIT INFO
+# Provides:          littleevil
+# Required-Start:    $local_fs $network
+# Required-Stop:     $local_fs
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: test service
+# Description:       test service daemon
+### END INIT INFO
+
+# 文件服务器 运营平台 商户平台
+files=(zhahaobing)
+# 目录
+deploy=/home/
+
+start() {
+    echo "starting test service..." 
+    for var in ${files[@]};
+    do
+        # 进入目录并运行服务器启动脚本
+        cd $deploy$var
+        sh zha.sh
+    done
+}
+
+
+stop() {
+    echo "stopping test service..."
+    for var in ${files[@]};
+    do
+        # 进入目录并运行服务器停止脚本
+        cd $deploy$var
+        sh zha.sh
+    done
+}
+
+restart() {
+    stop
+    start
+}
+
+# 这里没有重写status
+case "$1" in
+    start)
+        start
+        ;;
+    stop)
+        stop
+        ;;
+    restart)
+        restart
+        ;;
+esac

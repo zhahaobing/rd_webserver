@@ -1,0 +1,49 @@
+1.创建数据库dipper_galaxy
+create database dipper_galaxy DEFAULT CHARACTER SET utf8;
+
+2.创建用户表user_table
+CREATE TABLE user_table(user_id varchar(128) NOT NULL UNIQUE,user_name char(128) NOT NULL,user_passwd char(128) NOT NULL,gender int,department char(128),tel_number char(128) NOT NULL UNIQUE,email_addr char(128),task_group char(128),company char(128),svn_username char(128),svn_passwd char(128),git_username char(128),git_passwd char(128),reserved1 char(128),reserved2 char(128),reserved3 char(128),reserved4 int,reserved5 int,PRIMARY KEY(user_id,tel_number));
+
+3.向user_table插入一个数据项
+比如，查浩兵，研发部，手机号码是18969092378,男等等
+INSERT INTO user_table (user_id,user_name,user_passwd,gender,department,tel_number,email_addr,task_group,company,svn_username,svn_passwd,git_username,git_passwd)
+ value("2e61b22f-ed3d-4c7b-8090-650623bbaf95","查浩兵","123456","1","研发部","18969092378","zhahaobing@dipper-galaxy.com","嵌入式软件技术小组","北京北斗银河科技有限公司","zhahaobing_svn","123456","zhahaobing_git","123456");
+
+4.user_table表结构
++--------------+--------------+------+-----+---------+-------+
+| Field        | Type         | Null | Key | Default | Extra |
++--------------+--------------+------+-----+---------+-------+
+| user_id      | varchar(128) | NO   | PRI | NULL    |       |
+| user_name    | char(128)    | NO   |     | NULL    |       |
+| user_passwd  | char(128)    | NO   |     | NULL    |       |
+| gender       | int(11)      | YES  |     | NULL    |       |
+| department   | char(128)    | YES  |     | NULL    |       |
+| tel_number   | char(128)    | NO   | PRI | NULL    |       |
+| email_addr   | char(128)    | YES  |     | NULL    |       |
+| task_group   | char(128)    | YES  |     | NULL    |       |
+| company      | char(128)    | YES  |     | NULL    |       |
+| svn_username | char(128)    | YES  |     | NULL    |       |
+| svn_passwd   | char(128)    | YES  |     | NULL    |       |
+| git_username | char(128)    | YES  |     | NULL    |       |
+| git_passwd   | char(128)    | YES  |     | NULL    |       |
+| reserved1    | char(128)    | YES  |     | NULL    |       |
+| reserved2    | char(128)    | YES  |     | NULL    |       |
+| reserved3    | char(128)    | YES  |     | NULL    |       |
+| reserved4    | int(11)      | YES  |     | NULL    |       |
+| reserved5    | int(11)      | YES  |     | NULL    |       |
++--------------+--------------+------+-----+---------+-------+
+
+
+5.
+$user_id = $myrow[0];//用户ID
+	$username = $myrow[1];//用户名
+	$gender = $myrow[2];//性别
+	$department = $myrow[3];//部门
+	$tel_number = $myrow[4];//电话号码
+	$email_addr = $myrow[5];//邮箱
+	$task_group = $myrow[6];//工作小组
+	$company = $myrow[7];//公司名
+	$svn_username = $myrow[8];//SVN账号用户名
+	$svn_passwd = $myrow[9];//SVN账号密码
+	$git_username = $myrow[10];//GIT账号用户名
+	$git_passwd = $myrow[11];//GIT账号密码
